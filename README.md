@@ -1,4 +1,22 @@
+# Regression
 
+## Regularization
+
+### Ridge vs Lasso
+
+Ridge (L2)
+
+- Shrinks all the coefficients by the same proportion
+- Differentiable so gradient descent can be used for optimization
+- For data with correlation between features and labels
+- Gives better performance
+
+Lasso (L1)
+
+- Shrinks some coefficients to 0
+- Produces a sparse model 
+- Performs feature selection
+- Increases model explainability
 
 # Tree-based Methods
 
@@ -36,17 +54,30 @@ Boosting works by using information from previously grown trees to modify the ne
 
 ## Regression 
 
-Mean squared error vs Mean absolute error
+Mean squared error vs Mean absolute error vs Root mean squared error
 
 - Measures how far the errors are from the observations
 - MSE penalizes large errors more than small errors 
+- RMSE gives the same unit as the original data so it is easier to comprehend
 
 Root mean squared error vs Root mean squared logartithmic error
 
 - When there are outliers, RMSE can explode the error to a high value. However, RMSLE scales down the error and is less affected by the outlier.
 - RMSLE penalizes underestimation of the actual observation more than its observation. This is significant in business use cases where the underestimation has more dire consequences than the overestimation.
 
+Adjusted R-squared
+
+- Modified R-squared that is adjusted for the number of predictors in the model
+- Increases only when the new term improves the model more than chance would
+
 ## Classification
+
+True positives vs False negatives
+
+- TP: actual positive, predicted positive
+- FP: **actual negative, predicted positive**
+- TN: actual negative, predicted negative
+- FN: **actual positive, predicted negative**
 
 1. Accuracy 
 
@@ -58,13 +89,14 @@ Accuracy = no. of correct predictions / total no. of prediction s
 
 Sensitivity = TP/(FN+TP)
 
-- Proportion of positive data points that are correctly classified as positive 
+- Proportion of positive data points that are correctly classified as positive (e.g. proportion of people with the disease who are identified as positive)
+- Important in medical context
 
 3. False positive rate (specificity)
 
 Specificity = FP/(FP+TN)
 
-- Proportion of negative data points that are incorrectly classified as positive 
+- Proportion of negative data points that are incorrectly classified as positive (e.g. proportion of people without the disease who are identified as negative)
 
 4. Area under curve 
 
@@ -83,6 +115,15 @@ Recall = TP/(TP+FN)
 
 
 # Other important concepts
+
+### Normalization vs Standardisation
+
+Try standardisation for these cases and normalization otherwise:
+
+- Unsupervised learning
+- Features are close to a normal distribution
+- Outliers are present
+
 
 ### Bias-variance trade-off
 
